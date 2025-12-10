@@ -1,0 +1,358 @@
+/* GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Crimson Text", serif;
+  background: #000;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 40px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.bars {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-item {
+  position: relative;
+  padding: 8px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, white, gold, white);
+  transform: translateX(-50%);
+  transition: 0.4s;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.nav-icon {
+  transition: 0.3s;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2);
+}
+
+/* PRE HERO */
+.pre-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pre-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pre-hero-content {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+}
+
+/* RINGS */
+.rings {
+  padding: 50px 0;
+}
+
+.ring-showcase {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 0 80px;
+}
+
+.ring-photo {
+  width: 420px;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 26px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.ring-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.6) 60%, transparent 70%);
+  transform: translateX(-120%) skewX(-20deg);
+  transition: 0.6s;
+}
+
+.ring-photo:hover::after {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+.ring-photo:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35), 0 25px 70px rgba(0, 0, 0, 0.65);
+}
+
+/* RING TEXT ANIMATION */
+.ring-text {
+  width: 260px;
+  opacity: 0;
+  position: relative;
+}
+
+.left {
+  text-align: right;
+  transform: translateX(-80px);
+}
+
+.right {
+  text-align: left;
+  transform: translateX(80px);
+}
+
+.animate-text {
+  animation: slideFade 1s forwards;
+}
+
+.animate-text h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #fff, #f4e7d0, #fff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.animate-text:hover h2 {
+  animation: textGlitter 1.5s linear infinite;
+}
+
+.animate-text h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, white, gold, white);
+  transition: width 0.4s;
+}
+
+.animate-text:hover h2::after {
+  width: 100%;
+}
+
+.animate-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.85;
+  transition: text-shadow 0.4s;
+}
+
+.animate-text:hover p {
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes textGlitter {
+  to {
+    background-position: 200%;
+  }
+}
+
+@keyframes slideFade {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* CATEGORIES */
+.categories {
+  padding: 100px 60px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.categories-title {
+  font-size: 40px;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg, #fff, gold, #fff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.category-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.category-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  transition: background 0.5s;
+}
+
+.category-overlay h3 {
+  color: gold;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.category-item:hover img {
+  transform: scale(1.1);
+}
+
+.category-item:hover .category-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+/* FOOTER */
+.footer {
+  background: #111;
+  padding: 60px 40px 30px 40px;
+  color: #fff;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-column h3 {
+  margin-bottom: 20px;
+  color: gold;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: gold;
+}
+
+.social-icons i {
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  color: gold;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .ring-showcase {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 40px;
+  }
+
+  .category-grid {
+    gap: 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .category-item {
+    width: 140px;
+  }
+
+  .categories-title {
+    font-size: 28px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
